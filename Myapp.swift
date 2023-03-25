@@ -13,7 +13,7 @@ struct MyApp: App {
                     .tabItem{ 
                         Label("settings", systemImage: "gear") 
                     }
-                    Wardrobe()
+                Wardrobe()
                     .tabItem { 
                         Label("Wardrobe", systemImage: "cabinet" ) 
                     }
