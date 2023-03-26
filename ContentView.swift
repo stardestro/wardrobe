@@ -33,14 +33,6 @@ struct ContentView: View {
                         .padding()
                 }
             }
-            // RoundedRectangle(cornerRadius: 14)
-            //    .stroke(Color.primary, lineWidth: 3)
-            //    .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, height: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            // Image(systemName: "tshirt.fill")
-            //    .cornerRadius(7, antialiased: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-            //    .padding(30)
-            //    .background(Color.secondary)
-            //    .cornerRadius(10)
             
             // Need to remove systemName and only have self.hatName
             Image(systemName: self.hatName)
@@ -91,6 +83,6 @@ struct ContentView: View {
                     }
                 }
             }
-        } //.padding(.bottom)
+        }
     }
 }
