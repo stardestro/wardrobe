@@ -1,4 +1,4 @@
-import SwiftUI
+   import SwiftUI
 import CoreLocation
 import CoreLocationUI
 
@@ -32,7 +32,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 struct Settings: View {
     @StateObject var locationManager = LocationManager()
     @State private var days = 1
-    
+    @Binding var maxtemp: Double
+    @Binding var mintemp: Double
     var body: some View {
         NavigationView {
             Form {
@@ -50,6 +51,10 @@ struct Settings: View {
                         .cornerRadius(8)
                         .labelStyle(.titleAndIcon)
                         .symbolVariant(.fill)
+                        Slider(value: $maxtemp, in: 0...100, step: 5)
+                        Text("Max: \(maxtemp, specifier: "%.0f")")
+                        Slider(value: $mintemp, in: 0...100, step: 5)
+                        Text("Min: \(mintemp, specifier: "%.0f")")
                     }
                 }
                 Section("Clothing") {
@@ -75,8 +80,11 @@ struct Settings: View {
     }
 }
 
+/*
 struct Settings_Previews: PreviewProvider {
     static var previews: some View {
         Settings()
     }
-}
+}*/
+
+
