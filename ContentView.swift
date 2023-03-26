@@ -19,7 +19,7 @@ struct ContentView: View {
                 // Top bar in ZStack
                 HStack {
                     // Top horizontal bar
-                    Text("88*F")
+                    Text("88°F")
                         .padding()
                         .background(
                             Circle()
