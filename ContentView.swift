@@ -19,13 +19,13 @@ struct ContentView: View {
                 // Top bar in ZStack
                 HStack {
                     // Top horizontal bar
-                    Text("88°F")
-                        .padding()
-                        .background(
-                            Circle()
-                                .stroke(Color.primary, lineWidth: 3))
-                        .padding(.horizontal)
-                    Spacer()
+                    //Text("88°F")
+                    //    .padding()
+                    //    .background(
+                    //        Circle()
+                    //            .stroke(Color.primary, lineWidth: 3))
+                    //    .padding(.horizontal)
+                    // Spacer()
                 }
                 HStack {
                     Text("WebThread")
