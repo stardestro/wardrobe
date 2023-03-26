@@ -8,7 +8,7 @@ struct ArticleObject{
     var primaryColor: Color
     var secondaryColor: Color
     var material: String
-    var heavyiness: Int32
+    var heavyiness: Double
     var image: String
 }
 
@@ -21,7 +21,6 @@ struct ArticeView: View  {
                 .resizable()
                 .frame(minWidth: 20, idealWidth: 20, maxWidth: 100, minHeight: 20, idealHeight: 20, maxHeight: 100 , alignment: .leading)
                 .scaledToFit()
-            //.border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
                 .padding(15)
             VStack(spacing: 0){
                 Text(Article.name)
@@ -115,14 +114,19 @@ struct Wardrobe: View {
                         }.pickerStyle(.wheel)
                         
                     }.padding(.horizontal, 20)
-                     
-                    ColorPicker("Primary Color:", selection: $newclothes.primaryColor)
+                HStack{
+                    Text("Heavyiness")
+                    Slider(value: $newclothes.heavyiness, in: 0...100, step: 5)
+                    Text("\(newclothes.heavyiness)")
+                }.padding(.all, 10)
+                ColorPicker("Primary Color:", selection: $newclothes.primaryColor)
                         .padding(.horizontal, 20)
                         .padding(.bottom, 20)
                     ColorPicker("Secondary Color:", selection: $newclothes.secondaryColor)
                         .padding(.horizontal, 20)
                     Button("Add") {
                         wardrobe.append(newclothes)
+                        self.addClothes.toggle()
                     }
                     .padding(.all, 20)
                     
