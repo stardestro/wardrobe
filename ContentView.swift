@@ -15,7 +15,17 @@ struct ContentView: View {
     
     init() {
         // where articles is a list of articles
-        let articles = [ArticleObject(), ArticleObject()]
+        let articles = [
+            // hat
+            
+            // top
+            ArticleObject(name: "Mademark x MTV Smileys Shirt", "Top", categoryIcon: "tshirt", primaryColor: Color(.brown), secondaryColor: Color(.black), image: "mtv"),
+            // jacket
+            ArticleObject(name: "Sherpa-Lined Hooded Fleece Sweatshirt", "Top", categoryIcon: "jacket", primaryColor: Color(.brown), secondaryColor: Color(.black), image: "amazon-sweater"),
+            // pants
+            ArticleObject(name: "Mademark x MTV Smileys Shirt", "Bottom", categoryIcon: "tshirt", primaryColor: Color(.brown), secondaryColor: Color(.black), image: <#T##String#>)
+            // shoes
+        ]
         hatNameObject = articles.filter { $0.category == "Hat" }
         topNameObject = articles.filter { $0.category == "Top" }
         jacketNameObject = articles.filter { $0.category == "Jacket" }
@@ -60,6 +70,48 @@ struct ContentView: View {
                 // Shirt
                 Image(self.topName)
                     .resizable()
+                    .aspectRatio(1.0, contentMode: .fit)
+                    .overlay(RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.primary, lineWidth: 5))
+                // Hat
+                Image(self.hatName)
+                    .resizable()
+                    .aspectRatio(1.0, contentMode: .fit)
+                    .overlay(RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.primary, lineWidth: 5))
+            }
+            // Pants
+            Image(systemName: self.bottomName)
+                .resizable()
+                .aspectRatio(1.0, contentMode: .fit)
+                .overlay(RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.primary, lineWidth: 5))
+            ZStack {
+                // Shoes and repeat button
+                HStack {
+                    // Shoes
+                    Image(systemName: self.hatName)
+                        .resizable()
+                        .aspectRatio(1.0, contentMode: .fit)
+                        .overlay(RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.primary, lineWidth: 5))
+                }
+                HStack {
+                    Spacer()
+                    VStack {
+                        Spacer()
+                        Button(action: {  }) {
+                            Image(systemName: "arrow.clockwise.circle")
+                                .font(.system(size: 60))
+                                .foregroundColor(.primary)
+                                .padding(.horizontal)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
                     .aspectRatio(1.0, contentMode: .fit)
                     .overlay(RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.primary, lineWidth: 5))
