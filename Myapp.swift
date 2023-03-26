@@ -5,13 +5,13 @@ struct MyApp: App {
     var body: some Scene {
         WindowGroup {
             TabView{
-                ContentView()
-                    .tabItem { 
-                        Label("test", systemImage: "book") 
-                    }
                 Settings()
                     .tabItem{ 
                         Label("settings", systemImage: "gear") 
+                    }
+                ContentView()
+                    .tabItem { 
+                        Label("test", systemImage: "book") 
                     }
                 Wardrobe()
                     .tabItem { 
