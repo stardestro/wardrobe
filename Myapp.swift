@@ -2,17 +2,19 @@ import SwiftUI
 
 @main
 struct MyApp: App {
-     @State var wardrobesample = [ArticleObject.init(name: "RowdyHacks Memoriabilia", category: "Top", categoryIcon: "tshirt", subcategory: "tshirt", primaryColor: Color(.sRGB, red: 0.10, green: 0.10, blue: 0.10, opacity: 100), secondaryColor: Color(.sRGB, red: 0.50, green: 0.50, blue: 0, opacity: 100), material: "cotton", heavyiness: 10, image: "test"), ArticleObject.init(name: "tamushirt", category: "Top", categoryIcon: "tshirt", subcategory: "tshirt", primaryColor: Color(.sRGB, red: 0.10, green: 0.10, blue: 0.10, opacity: 100), secondaryColor: Color(.sRGB, red: 0.50, green: 0.50, blue: 0, opacity: 100), material: "cotton", heavyiness: 10, image: "test"), ArticleObject.init(name: "hackuta ", category: "top", categoryIcon: "tshirt",  subcategory: "tshirt", primaryColor: Color(.sRGB, red: 0.10, green: 0.10, blue: 0.10, opacity: 100), secondaryColor: Color(.sRGB, red: 0.50, green: 0.50, blue: 0, opacity: 100), material: "cotton", heavyiness: 10, image: "test"), ArticleObject.init(name: "nike shoes ", category: "shoes", categoryIcon: "shoeprints.fill", subcategory: "sports", primaryColor: Color(.sRGB, red: 0.10, green: 0.10, blue: 0.10, opacity: 100), secondaryColor: Color(.sRGB, red: 0.50, green: 0.50, blue: 0, opacity: 100), material: "cotton", heavyiness: 10, image: "test")]
+    @State var wardrobesample = [ArticleObject(name: "rowdyhack", category: "Top", categoryIcon: "tshirt", primaryColor: Color(.blue), secondaryColor: Color(.red), maxTemp: 70, minTemp: 50, image: "test"),ArticleObject(name: "tamu", category: "Top", categoryIcon: "tshirt", primaryColor: Color(.blue), secondaryColor: Color(.red), maxTemp: 70, minTemp: 50, image: "test"),ArticleObject(name: "legs", category: "Top", categoryIcon: "tshirt", primaryColor: Color(.blue), secondaryColor: Color(.red), maxTemp: 70, minTemp: 50, image: "test"),ArticleObject(name: "wonder", category: "Top", categoryIcon: "tshirt", primaryColor: Color(.blue), secondaryColor: Color(.red), maxTemp: 70, minTemp: 50, image: "test")]
+    @State var maxtemp: Double = 10
+    @State var mintemp: Double = 10
     @State var addclothes = false
-    @State var tempclothes: ArticleObject = ArticleObject.init(name: "test", category: "Bottoms", categoryIcon: "tshirt", subcategory: "tshirt" , primaryColor: .blue, secondaryColor: .red, material: "leather", heavyiness: 20, image: "wow")
+    @State var tempclothes: ArticleObject = ArticleObject(name: "rowdyhack", category: "Top", categoryIcon: "tshirt", primaryColor: Color(.blue), secondaryColor: Color(.red), maxTemp: 70, minTemp: 50, image: "test")
     var body: some Scene {
         WindowGroup {
             TabView{
-                Settings()
+                Settings(maxtemp: $maxtemp, mintemp: $mintemp)
                     .tabItem{ 
                         Label("settings", systemImage: "gear") 
                     }
-                ContentView()
+                ContentView(maxtemp: maxtemp)
                     .tabItem { 
                         Label("test", systemImage: "book") 
                     }
@@ -24,3 +26,4 @@ struct MyApp: App {
         }
     } 
 }
+
