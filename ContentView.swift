@@ -1,16 +1,33 @@
 import SwiftUI
 
 struct ContentView: View {
-    //@State var hatName: String
-    @State var hatName = "tshirt.fill"
-    //@State var topName: String
-    //@State var jacketName: String
-    //@State var bottomName: String
-    //@State var shoesName: String
-    //@State var temperatureValue: String 
-    let maxtemp: Double
-    func get_algo_results() {
+    var hatNameObject: ArticleObject
+    var topNameObject: ArticleObject
+    var jacketNameObject: ArticleObject
+    var bottomNameObject: ArticleObject
+    var shoesNameObject: ArticleObject
+    var hatName: String
+    var topName: String
+    var jacketName: String
+    var bottomName: String
+    var shoesName: String
+    // var temperatureValue: String
+    
+    init() {
+        // where articles is a list of articles
+        let articles = [ArticleObject(), ArticleObject()]
+        hatNameObject = articles.filter { $0.category == "Hat" }
+        topNameObject = articles.filter { $0.category == "Top" }
+        jacketNameObject = articles.filter { $0.category == "Jacket" }
+        bottomNameObject = articles.filter { $0.category == "Bottom" }
+        shoesNameObject = articles.filter { $0.category == "Shoes" }
         
+        // images are found under article.image
+        hatName = hatNameObject.image
+        topName = topNameObject.image
+        jacketName = jacketNameObject.image
+        jacketName = jacketNameObject.image
+        shoesName = shoesNameObject.image
     }
     
     var body: some View {
@@ -19,43 +36,42 @@ struct ContentView: View {
                 // Top bar in ZStack
                 HStack {
                     // Top horizontal bar
-                    Text("\(maxtemp, specifier: "%.0f")°F")
-                        .padding()
-                        .background(
-                            Circle()
-                                .stroke(Color.primary, lineWidth: 3))
-                        .padding(.horizontal)
-                    Spacer()
+                    //Text("88°F")
+                    //    .padding()
+                    //    .background(
+                    //        Circle()
+                    //            .stroke(Color.primary, lineWidth: 3))
+                    //    .padding(.horizontal)
+                    // Spacer()
                 }
                 HStack {
-                    Text("WebThread")
+                    Text("App-arel")
                         .font(.largeTitle)
                         .padding()
                 }
             }
             
-            // Need to remove systemName and only have self.hatName
-            Image(systemName: self.hatName)
+            Image(self.hatName)
                 .resizable()
                 .aspectRatio(1.0, contentMode: .fit)
                 .overlay(RoundedRectangle(cornerRadius: 10)
                     .stroke(Color.primary, lineWidth: 5))
             HStack {
                 // Shirt
-                Image(systemName: self.hatName)
+                Image(self.topName)
                     .resizable()
                     .aspectRatio(1.0, contentMode: .fit)
                     .overlay(RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.primary, lineWidth: 5))
                 // Hat
-                Image(systemName: self.hatName)
+                Image(self.hatName)
                     .resizable()
                     .aspectRatio(1.0, contentMode: .fit)
                     .overlay(RoundedRectangle(cornerRadius: 10)
                         .stroke(Color.primary, lineWidth: 5))
             }
             // Pants
-            Image(systemName: self.hatName)
+            Image(systemName: self.bottomName)
                 .resizable()
                 .aspectRatio(1.0, contentMode: .fit)
                 .overlay(RoundedRectangle(cornerRadius: 10)
@@ -63,6 +79,29 @@ struct ContentView: View {
             ZStack {
                 // Shoes and repeat button
                 HStack {
+                    // Shoes
+                    Image(systemName: self.hatName)
+                        .resizable()
+                        .aspectRatio(1.0, contentMode: .fit)
+                        .overlay(RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.primary, lineWidth: 5))
+                }
+                HStack {
+                    Spacer()
+                    VStack {
+                        Spacer()
+                        Button(action: {  }) {
+                            Image(systemName: "arrow.clockwise.circle")
+                                .font(.system(size: 60))
+                                .foregroundColor(.primary)
+                                .padding(.horizontal)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
                     // Shoes
                     Image(systemName: self.hatName)
                         .resizable()
