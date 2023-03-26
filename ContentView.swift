@@ -1,28 +1,88 @@
 import SwiftUI
 
-@main
-struct MyApp: App {
-    @State var wardrobesample = [ArticleObject(name: "rowdyhack", category: "Top", categoryIcon: "tshirt", primaryColor: Color(.blue), secondaryColor: Color(.red), maxTemp: 70, minTemp: 50, image: "test"),ArticleObject(name: "tamu", category: "Top", categoryIcon: "tshirt", primaryColor: Color(.blue), secondaryColor: Color(.red), maxTemp: 70, minTemp: 50, image: "test"),ArticleObject(name: "legs", category: "Top", categoryIcon: "tshirt", primaryColor: Color(.blue), secondaryColor: Color(.red), maxTemp: 70, minTemp: 50, image: "test"),ArticleObject(name: "wonder", category: "Top", categoryIcon: "tshirt", primaryColor: Color(.blue), secondaryColor: Color(.red), maxTemp: 70, minTemp: 50, image: "test")]
-    @State var maxtemp: Double = 10
-    @State var mintemp: Double = 10
-    @State var addclothes = false
-    @State var tempclothes: ArticleObject = ArticleObject(name: "rowdyhack", category: "Top", categoryIcon: "tshirt", primaryColor: Color(.blue), secondaryColor: Color(.red), maxTemp: 70, minTemp: 50, image: "test")
-    var body: some Scene {
-        WindowGroup {
-            TabView{
-                Settings(maxtemp: $maxtemp, mintemp: $mintemp)
-                    .tabItem{ 
-                        Label("settings", systemImage: "gear") 
+struct ContentView: View {
+    //@State var hatName: String
+    @State var hatName = "tshirt.fill"
+    //@State var topName: String
+    //@State var jacketName: String
+    //@State var bottomName: String
+    //@State var shoesName: String
+    //@State var temperatureValue: String 
+    let maxtemp: Double
+    func get_algo_results() {
+        
+    }
+    
+    var body: some View {
+        VStack(spacing: 10) {
+            ZStack {
+                // Top bar in ZStack
+                HStack {
+                    // Top horizontal bar
+                    Text("\(maxtemp, specifier: "%.0f")°F")
+                        .padding()
+                        .background(
+                            Circle()
+                                .stroke(Color.primary, lineWidth: 3))
+                        .padding(.horizontal)
+                    Spacer()
+                }
+                HStack {
+                    Text("WebThread")
+                        .font(.largeTitle)
+                        .padding()
+                }
+            }
+            
+            // Need to remove systemName and only have self.hatName
+            Image(systemName: self.hatName)
+                .resizable()
+                .aspectRatio(1.0, contentMode: .fit)
+                .overlay(RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.primary, lineWidth: 5))
+            HStack {
+                // Shirt
+                Image(systemName: self.hatName)
+                    .resizable()
+                    .aspectRatio(1.0, contentMode: .fit)
+                    .overlay(RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.primary, lineWidth: 5))
+                // Hat
+                Image(systemName: self.hatName)
+                    .resizable()
+                    .aspectRatio(1.0, contentMode: .fit)
+                    .overlay(RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.primary, lineWidth: 5))
+            }
+            // Pants
+            Image(systemName: self.hatName)
+                .resizable()
+                .aspectRatio(1.0, contentMode: .fit)
+                .overlay(RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.primary, lineWidth: 5))
+            ZStack {
+                // Shoes and repeat button
+                HStack {
+                    // Shoes
+                    Image(systemName: self.hatName)
+                        .resizable()
+                        .aspectRatio(1.0, contentMode: .fit)
+                        .overlay(RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.primary, lineWidth: 5))
+                }
+                HStack {
+                    Spacer()
+                    VStack {
+                        Spacer()
+                        Button(action: { get_algo_results() }) {
+                            Image(systemName: "arrow.clockwise.circle")
+                                .font(.system(size: 60))
+                                .foregroundColor(.primary)
+                                .padding(.horizontal)
+                        }
                     }
-                ContentView(maxtemp: maxtemp)
-                    .tabItem { 
-                        Label("test", systemImage: "book") 
-                    }
-                Wardrobe(wardrobe: wardrobesample, newclothes: tempclothes)
-                    .tabItem { 
-                        Label("Wardrobe", systemImage: "cabinet" ) 
-                    }
+                }
             }
         }
-    } 
+    }
 }
