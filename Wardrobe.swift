@@ -17,7 +17,7 @@ struct ArticeView: View  {
     var body: some View{
         HStack{
             
-            Image(systemName: "tshirt")
+            Image(Article.image)
                 .resizable()
                 .frame(minWidth: 20, idealWidth: 20, maxWidth: 100, minHeight: 20, idealHeight: 20, maxHeight: 100 , alignment: .leading)
                 .scaledToFit()
@@ -25,7 +25,7 @@ struct ArticeView: View  {
             VStack(spacing: 0){
                 Text(Article.name)
                     .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, idealWidth: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-                    .font(.title)
+                    .font(.title2)
                     .padding(.top, 5)
                     .padding(.leading, 5)
                 HStack(spacing: 0){
@@ -101,8 +101,12 @@ struct Wardrobe: View {
                         Text("Subcategory:")
                         Picker(selection: $newclothes.subcategory, label: /*@START_MENU_TOKEN@*/Text("Picker")/*@END_MENU_TOKEN@*/) {
                             Text("tshirt")
+                            Text("sweater")
+                            Text("sweatshirt")
+                            Text("flannel")
                             Text("sneakers")
                             Text("sweatpants")
+                            Text("hoodie")
                         }.pickerStyle(.wheel)
                     }.padding(.horizontal, 20)
                     HStack{
@@ -111,15 +115,17 @@ struct Wardrobe: View {
                             Text("Cotton")
                             Text("Leather")
                             Text("Spandex")
+                            Text("Polyester")
                         }.pickerStyle(.wheel)
                         
                     }.padding(.horizontal, 20)
-                HStack{
-                    Text("Heavyiness")
-                    Slider(value: $newclothes.heavyiness, in: 0...100, step: 5)
-                    Text("\(newclothes.heavyiness)")
-                }.padding(.all, 10)
-                ColorPicker("Primary Color:", selection: $newclothes.primaryColor)
+                     
+                    HStack{
+                        Text("Heavyiness")
+                        Slider(value: $newclothes.heavyiness, in: 0...100, step: 5)
+                        Text("\(newclothes.heavyiness)")
+                    }.padding(.all, 10)
+                    ColorPicker("Primary Color:", selection: $newclothes.primaryColor)
                         .padding(.horizontal, 20)
                         .padding(.bottom, 20)
                     ColorPicker("Secondary Color:", selection: $newclothes.secondaryColor)
@@ -143,7 +149,14 @@ struct Wardrobe: View {
     }
     
     struct wardrobe_Previews: PreviewProvider {
-        static var wardrobesample = [ArticleObject.init(name: "RowdyHacks Memoriabilia", category: "Top", categoryIcon: "tshirt", subcategory: "tshirt", primaryColor: Color(.sRGB, red: 0.10, green: 0.10, blue: 0.10, opacity: 100), secondaryColor: Color(.sRGB, red: 0.50, green: 0.50, blue: 0, opacity: 100), material: "cotton", heavyiness: 10, image: "test"), ArticleObject.init(name: "tamushirt", category: "Top", categoryIcon: "tshirt", subcategory: "tshirt", primaryColor: Color(.sRGB, red: 0.10, green: 0.10, blue: 0.10, opacity: 100), secondaryColor: Color(.sRGB, red: 0.50, green: 0.50, blue: 0, opacity: 100), material: "cotton", heavyiness: 10, image: "test"), ArticleObject.init(name: "hackuta ", category: "top", categoryIcon: "tshirt",  subcategory: "tshirt", primaryColor: Color(.sRGB, red: 0.10, green: 0.10, blue: 0.10, opacity: 100), secondaryColor: Color(.sRGB, red: 0.50, green: 0.50, blue: 0, opacity: 100), material: "cotton", heavyiness: 10, image: "test"), ArticleObject.init(name: "nike shoes ", category: "shoes", categoryIcon: "shoeprints.fill", subcategory: "sports", primaryColor: Color(.sRGB, red: 0.10, green: 0.10, blue: 0.10, opacity: 100), secondaryColor: Color(.sRGB, red: 0.50, green: 0.50, blue: 0, opacity: 100), material: "cotton", heavyiness: 10, image: "test")]
+        static var wardrobesample =
+        [ArticleObject.init(name: "Sherpa-Lined Hooded Fleece Sweatshirt", category: "Top", categoryIcon: "tshirt", subcategory: "sweater", primaryColor: Color(.sRGB, red: 0.10, green: 0.10, blue: 0.10, opacity: 100), secondaryColor: Color(.sRGB, red: 0.50, green: 0.50, blue: 0, opacity: 100), material: "cotton", heavyiness: 50, image: "amazon-sweater"),
+         ArticleObject.init(name: "Mademark x MTV Smileys Shirt", category: "Top", categoryIcon: "tshirt", subcategory: "tshirt", primaryColor: Color(.sRGB, red: 0.10, green: 0.10, blue: 0.10, opacity: 100), secondaryColor: Color(.sRGB, red: 0.50, green: 0.50, blue: 0, opacity: 100), material: "cotton", heavyiness: 10, image: "mtv"),
+         ArticleObject.init(name: "Long-Sleeve Flannel Shirt", category: "Top", categoryIcon: "tshirt",  subcategory: "flannel", primaryColor: Color(.sRGB, red: 0.10, green: 0.10, blue: 0.10, opacity: 100), secondaryColor: Color(.sRGB, red: 0.50, green: 0.50, blue: 0, opacity: 100), material: "cotton", heavyiness: 20, image: "flannel"),
+         ArticleObject.init(name: "Fleece Crewneck Sweatshirt", category: "Top", categoryIcon: "tshirt",  subcategory: "sweatshirt", primaryColor: Color(.sRGB, red: 0.10, green: 0.10, blue: 0.10, opacity: 100), secondaryColor: Color(.sRGB, red: 0.50, green: 0.50, blue: 0, opacity: 100), material: "cotton", heavyiness: 30, image: "sweatshirt"),
+         ArticleObject.init(name: "Quarter-Zip Sweater", category: "Top", categoryIcon: "tshirt",  subcategory: "sweater", primaryColor: Color(.sRGB, red: 0.10, green: 0.10, blue: 0.10, opacity: 100), secondaryColor: Color(.sRGB, red: 0.50, green: 0.50, blue: 0, opacity: 100), material: "cotton", heavyiness: 40, image: "quarter-zip-sweater"),
+         ArticleObject.init(name: "WDIRARA Cartoon Letter Graphic Drawstring Hoodie", category: "Top", categoryIcon: "tshirt.fill",  subcategory: "hoodie", primaryColor: Color(.sRGB, red: 0.10, green: 0.10, blue: 0.10, opacity: 100), secondaryColor: Color(.sRGB, red: 0.50, green: 0.50, blue: 0, opacity: 100), material: "polyester", heavyiness: 50, image: "red-jacket"),
+         ArticleObject.init(name: "nike shoes ", category: "shoes", categoryIcon: "shoeprints.fill", subcategory: "sports", primaryColor: Color(.sRGB, red: 0.10, green: 0.10, blue: 0.10, opacity: 100), secondaryColor: Color(.sRGB, red: 0.50, green: 0.50, blue: 0, opacity: 100), material: "cotton", heavyiness: 10, image: "test")]
         static var previews: some View {
             Wardrobe(wardrobe: wardrobesample, newclothes: wardrobesample[1])
         }
